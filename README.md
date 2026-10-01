@@ -8,6 +8,38 @@
 ![Vite](https://img.shields.io/badge/Vite-7-646cff)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8)
 
+**Demo:** https://pintolj.github.io/cen-t/ (publicada automáticamente desde `main` con GitHub Pages)
+
+## Capturas
+
+Tema oscuro:
+
+| Resumen | Cartera |
+| --- | --- |
+| <img src="docs/screenshots/resumen-oscuro.png" width="420" alt="Resumen — tema oscuro"> | <img src="docs/screenshots/cartera-oscuro.png" width="420" alt="Cartera — tema oscuro"> |
+
+| SaaS | Movimientos |
+| --- | --- |
+| <img src="docs/screenshots/saas-oscuro.png" width="420" alt="SaaS — tema oscuro"> | <img src="docs/screenshots/movimientos-oscuro.png" width="420" alt="Movimientos — tema oscuro"> |
+
+| Ajustes |
+| --- |
+| <img src="docs/screenshots/ajustes-oscuro.png" width="420" alt="Ajustes — tema oscuro"> |
+
+Tema claro:
+
+| Resumen | Cartera |
+| --- | --- |
+| <img src="docs/screenshots/resumen-claro.png" width="420" alt="Resumen — tema claro"> | <img src="docs/screenshots/cartera-claro.png" width="420" alt="Cartera — tema claro"> |
+
+| SaaS | Movimientos |
+| --- | --- |
+| <img src="docs/screenshots/saas-claro.png" width="420" alt="SaaS — tema claro"> | <img src="docs/screenshots/movimientos-claro.png" width="420" alt="Movimientos — tema claro"> |
+
+| Ajustes |
+| --- |
+| <img src="docs/screenshots/ajustes-claro.png" width="420" alt="Ajustes — tema claro"> |
+
 ## Qué es
 
 Cénit reúne en un solo panel finanzas personales, cartera de inversión y métricas de un negocio SaaS: cripto, renta variable y KPIs de suscripción conviven en la misma interfaz, con los mismos controles de rango y tema en todas las vistas.
@@ -63,6 +95,15 @@ npm run data-check  # coherencia del dataset en los 5 rangos (caja, MRR, cartera
 
 Los tres scripts se ejecutan en cada push en GitHub Actions (ver `.github/workflows/ci.yml`).
 
+## Capturas del README
+
+```bash
+npm run build   # el script toma dist/ como origen
+npm run shots   # Playwright navega las 5 vistas en ambos temas -> docs/screenshots/
+```
+
+Requiere `npx playwright install chromium` la primera vez. No forma parte de la CI: se ejecuta en local y las imágenes se versionan en `docs/screenshots/`.
+
 ## Estructura
 
 ```
@@ -80,7 +121,10 @@ src/
 └── App.tsx
 scripts/
 ├── smoke.tsx               # SSR de las vistas
-└── data-check.ts           # validaciones del dataset
+├── data-check.ts           # validaciones del dataset
+└── screenshot.mjs          # capturas con Playwright (npm run shots)
+docs/screenshots/           # imágenes usadas en este README
+.github/workflows/ci.yml    # typecheck + smoke + data-check + build + despliegue en Pages
 ```
 
 ## Datos simulados
